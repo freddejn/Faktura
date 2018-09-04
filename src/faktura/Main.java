@@ -14,10 +14,9 @@ public class Main extends Application {
         primaryStage.setTitle("Faktura");
         primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.setMinHeight(300);
-        primaryStage.setMinWidth(300);
+        primaryStage.setMinWidth(500);
         primaryStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);

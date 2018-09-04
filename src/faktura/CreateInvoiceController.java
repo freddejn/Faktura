@@ -44,10 +44,10 @@ public class CreateInvoiceController {
     accountNumberCol.setCellValueFactory(new PropertyValueFactory<>("accountNumber"));
     debitCol.setCellValueFactory(new PropertyValueFactory<>("debit"));
     creditCol.setCellValueFactory(new PropertyValueFactory<>("credit"));
-    accountNameCol.prefWidthProperty().bind(resultTable.widthProperty().divide(4));
-    accountNumberCol.prefWidthProperty().bind(resultTable.widthProperty().divide(4));
-    debitCol.prefWidthProperty().bind(resultTable.widthProperty().divide(4));
-    creditCol.prefWidthProperty().bind(resultTable.widthProperty().divide(4));
+    //accountNameCol.prefWidthProperty().bind(resultTable.widthProperty().divide(4));
+    //accountNumberCol.prefWidthProperty().bind(resultTable.widthProperty().divide(4));
+    //debitCol.prefWidthProperty().bind(resultTable.widthProperty().divide(4));
+    //creditCol.prefWidthProperty().bind(resultTable.widthProperty().divide(4));
 
     numberOfInvoiceInput.textProperty().addListener((observable, oldValue, newValue) -> {
       if(!newValue.matches("\\d")){
@@ -86,7 +86,7 @@ public class CreateInvoiceController {
   }
 
   /**
-   * Shows values in table if botho of the input fields has values.
+   * Shows values in table if both of the input fields has values.
    * Shows an alert to the user if either of the input fields is empty.
    */
   private void showValues(){
@@ -96,7 +96,6 @@ public class CreateInvoiceController {
       Alert alert = new Alert(AlertType.INFORMATION, "Antal fakturor eller belopp saknas!", ButtonType.OK);
       alert.showAndWait();
     }
-
   }
 
   /**
@@ -109,22 +108,23 @@ public class CreateInvoiceController {
     String amount = amountInvoiceInput.getText();
     double numberInvoicesDouble;
     double amountDouble;
-    double recievableValue;
+    double receivableValue;
     try{
       numberInvoicesDouble = Double.parseDouble(numberOfInvoices);
       amountDouble = Double.parseDouble(amount);
-      recievableValue = numberInvoicesDouble*amountDouble;
+      receivableValue = numberInvoicesDouble*amountDouble;
     } catch (java.lang.NumberFormatException e){
       return null;
     }
-    double revenueValue = recievableValue*0.8;
-    double vat = recievableValue*0.2;
+
+    double revenueValue = receivableValue * 0.8; // Calculates revenue
+    double vat = receivableValue * 0.2; // Calculates VAT
     String defaultValue = "0.00";
     NumberFormat formatter = new DecimalFormat("#0.00");
-    Journal  recievable = new Journal("1511", "Kundfordran", String.valueOf(formatter.format(recievableValue)), defaultValue);
+    Journal  receivable = new Journal("1511", "Kundfordran", String.valueOf(formatter.format(receivableValue)), defaultValue);
     Journal  revenue = new Journal("3001", "Försäljning inom sverige", defaultValue, String.valueOf(formatter.format(revenueValue)));
     Journal  vatEntry = new Journal("2611", "Utgående moms", defaultValue, String.valueOf(formatter.format(vat)));
-    journalEntry.add(recievable);
+    journalEntry.add(receivable);
     journalEntry.add(revenue);
     journalEntry.add(vatEntry);
     return journalEntry;
