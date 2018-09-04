@@ -1,0 +1,14 @@
+drwxr-xr-x    8 Fredrik  staff   256 Sep  4 11:41 .
+drwxr-xr-x+ 191 Fredrik  staff  6112 Sep  4 11:42 ..
+-rw-r--r--@   1 Fredrik  staff  8196 Sep  4 11:00 .DS_Store
+drwxr-xr-x   11 Fredrik  staff   352 Sep  4 11:41 .git
+drwxr-xr-x   12 Fredrik  staff   384 Sep  4 11:41 .idea
+-rw-r--r--    1 Fredrik  staff   425 Sep  3 16:55 Faktura.iml
+drwxr-xr-x    5 Fredrik  staff   160 Sep  4 10:50 out
+drwxr-xr-x    3 Fredrik  staff    96 Sep  3 18:40 src
+
+.DS_Store
+.idea
+Faktura.iml
+out/*
+
