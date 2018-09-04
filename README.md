@@ -1,5 +1,5 @@
 # Faktura
-Java klasserna ligger i src. 
+Java klasserna ligger i src mappen. 
 * CreateInvoiceController.java
   * Inehåller det mesta av koden och hur programmet beter sig
 * Journal.java
